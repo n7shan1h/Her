@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Her Sanctuary ✦</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18120e;--parchment:#f5ede0;--warm:#e8ddd0;--cream:#faf6f0;--gold:#b8934a;--gold-l:#d4aa6a;--gold-xl:#f0cc8a;--rose:#c17b7b;--rose-l:#e8a8a8;--moss:#6b7c5a;--moss-l:#9ab870;--plum:#7a5c7a;--plum-l:#b08ab0;--sepia:#8b6f5a;--bd:rgba(184,147,74,.22);--sh:rgba(26,20,16,.14);--txt:#6b5d4f;--faint:#9b8b7d}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{background:var(--ink);color:var(--parchment);font-family:'Jost',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.55}
+
+/* ─── SPLASH ─── */
+#splash{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:opacity .8s ease,transform .8s ease}
+#splash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.sp-orn{font-size:34px;color:var(--gold);opacity:0;animation:fuA .8s .2s forwards}
+.sp-t{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--parchment);letter-spacing:3px;opacity:0;animation:fuA .8s .5s forwards}
+.sp-s{font-size:11px;color:var(--faint);letter-spacing:4px;text-transform:uppercase;opacity:0;animation:fuA .8s .8s forwards}
+.sp-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0;animation:fuA .8s 1.1s forwards;margin:4px 0}
+.sp-btn{margin-top:8px;background:transparent;border:1px solid var(--bd);color:var(--gold-l);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:10px 28px;cursor:pointer;opacity:0;animation:fuA .8s 1.4s forwards;transition:all .3s;border-radius:2px}
+.sp-btn:hover{background:rgba(184,147,74,.1);border-color:var(--gold)}
+@keyframes fuA{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── APP ─── */
+#app{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 0 88px}
+
+/* ─── NAV ─── */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(18,10,8,.93);border-top:1px solid var(--bd);backdrop-filter:blur(24px);display:flex;z-index:100;padding:6px 0 max(6px,env(safe-area-inset-bottom))}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;cursor:pointer;transition:all .2s;border:none;background:none;color:var(--faint);font-family:'Jost',sans-serif;font-size:8.5px;letter-spacing:.8px;text-transform:uppercase}
+.ni.a{color:var(--gold-l)}
+.ni.a .nic{transform:translateY(-2px)}
+.nic{font-size:17px;transition:transform .2s}
+
+/* ─── HEADER ─── */
+.hdr{padding:26px 22px 0;display:flex;flex-direction:column;gap:2px}
+.hdr-top{display:flex;align-items:flex-start;justify-content:space-between}
+.hdr-orn{font-family:'IM Fell English',serif;font-size:10px;color:var(--gold);letter-spacing:2px;opacity:.75}
+.hdr-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:1px}
+.hdr-date{font-size:10px;color:var(--faint);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.streak-pill{display:flex;align-items:center;gap:5px;background:rgba(184,147,74,.1);border:1px solid var(--bd);padding:5px 11px;border-radius:20px;font-size:11px;color:var(--gold-l)}
+
+/* ─── DIVIDER ─── */
+.div{display:flex;align-items:center;gap:8px;padding:14px 22px 0;opacity:.55}
+.div-l{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.div-s{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold)}
+
+/* ─── PAGES ─── */
+.page{display:none;padding:14px 22px 0}
+.page.a{display:block}
+
+/* ─── MOOD ─── */
+.mood{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.mood-t{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold-l);font-style:italic;margin-bottom:10px}
+.mood-row{display:flex;gap:6px;flex-wrap:wrap}
+.mb{flex:1;min-width:52px;background:rgba(255,255,255,.04);border:1px solid rgba(184,147,74,.18);border-radius:8px;padding:7px 4px;text-align:center;cursor:pointer;transition:all .2s;font-size:17px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.mb span{font-size:8.5px;color:var(--faint);letter-spacing:.8px;text-transform:uppercase}
+.mb.a{background:rgba(184,147,74,.15);border-color:var(--gold)}
+
+/* ─── CARDS ─── */
+.card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px;transition:all .25s}
+.card:hover{background:rgba(255,255,255,.05)}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:8px}
+.ct{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400}
+
+/* ─── BADGES ─── */
+.bdg{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-family:'Jost',sans-serif;font-weight:400}
+.b-r{background:rgba(193,123,123,.2);color:var(--rose-l);border:1px solid rgba(193,123,123,.3)}
+.b-g{background:rgba(184,147,74,.15);color:var(--gold-l);border:1px solid rgba(184,147,74,.25)}
+.b-m{background:rgba(107,124,90,.2);color:#9ab888;border:1px solid rgba(107,124,90,.3)}
+.b-p{background:rgba(122,92,122,.2);color:var(--plum-l);border:1px solid rgba(122,92,122,.3)}
+
+/* ─── PROGRESS ─── */
+.pw{margin-top:10px}
+.pl{display:flex;justify-content:space-between;margin-bottom:4px}
+.pn{font-size:11px;color:var(--txt)}
+.pp{font-size:11px;color:var(--gold-l);font-weight:400}
+.pt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-bottom:8px}
+.pf{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.f-g{background:linear-gradient(to right,var(--moss),var(--moss-l))}
+.f-a{background:linear-gradient(to right,var(--gold),var(--gold-l))}
+.f-p{background:linear-gradient(to right,var(--plum),var(--plum-l))}
+.f-r{background:linear-gradient(to right,var(--rose),var(--rose-l))}
+
+/* ─── STATS ─── */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.sc{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:11px;padding:14px;text-align:center}
+.sn{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold-l);font-weight:300}
+.sl{font-size:9.5px;color:var(--faint);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+
+/* ─── HEATMAP ─── */
+.hm{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px}
+.hmlab{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.hml{font-size:8px;color:var(--faint);text-align:center;letter-spacing:.4px}
+.hc{aspect-ratio:1;border-radius:4px;border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:7.5px;color:rgba(255,255,255,.25);cursor:default;transition:transform .15s}
+.hc:hover{transform:scale(1.1)}
+.h0{background:rgba(255,255,255,.03)}.h1{background:rgba(184,147,74,.15);color:var(--gold)}.h2{background:rgba(184,147,74,.3);color:var(--gold-l)}.h3{background:rgba(184,147,74,.5);color:var(--gold-l)}.h4{background:rgba(184,147,74,.78);color:#18120e}
+
+/* ─── MANTRA ─── */
+.mantra{background:linear-gradient(135deg,rgba(193,123,123,.1),rgba(122,92,122,.1));border:1px solid rgba(193,123,123,.2);border-radius:12px;padding:18px;text-align:center;margin-bottom:14px}
+.mantra-t{font-family:'IM Fell English',serif;font-size:15px;font-style:italic;color:var(--parchment);line-height:1.75;transition:opacity .3s}
+.mantra-a{font-size:9.5px;color:var(--faint);margin-top:6px;letter-spacing:1.5px}
+.mantra-btn{background:none;border:1px solid rgba(193,123,123,.3);color:var(--rose-l);padding:5px 14px;border-radius:20px;font-size:9.5px;cursor:pointer;margin-top:10px;transition:all .2s;letter-spacing:1px;font-family:'Jost',sans-serif}
+.mantra-btn:hover{background:rgba(193,123,123,.1)}
+
+/* ─── LOG ─── */
+.lf{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
+.lft{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold-l);font-style:italic;margin-bottom:12px}
+.ig{margin-bottom:11px}
+.il{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--faint);margin-bottom:5px;display:block;font-weight:400}
+.ti,.ta,.si{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(184,147,74,.2);border-radius:8px;padding:9px 11px;color:var(--parchment);font-family:'Jost',sans-serif;font-size:12.5px;font-weight:300;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.ti:focus,.ta:focus,.si:focus{border-color:var(--gold)}
+.ta{resize:none;height:72px;line-height:1.5}
+.si option{background:#18120e}
+.sb{width:100%;background:rgba(184,147,74,.15);border:1px solid var(--gold);color:var(--gold-l);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:10px;border-radius:8px;cursor:pointer;transition:all .2s;font-weight:400}
+.sb:hover{background:rgba(184,147,74,.25)}
+.sb:active{transform:scale(.98)}
+
+/* ─── LOG ENTRIES ─── */
+.le{background:rgba(255,255,255,.02);border:1px solid rgba(184,147,74,.13);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 14px;margin-bottom:9px;animation:sld .3s ease}
+@keyframes sld{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+.le-d{font-size:9.5px;color:var(--faint);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center}
+.le-s{font-family:'Cormorant Garamond',serif;font-size:15px;margin-bottom:3px}
+.le-n{font-size:11.5px;color:var(--txt);line-height:1.6}
+.le-h{font-size:9.5px;color:var(--gold-l);background:rgba(184,147,74,.1);padding:2px 7px;border-radius:10px}
+.del-btn{background:none;border:none;color:var(--faint);cursor:pointer;font-size:11px;padding:2px 4px;border-radius:4px;transition:color .2s}
+.del-btn:hover{color:var(--rose)}
+
+/* ─── SECTION HEADERS ─── */
+.sh{margin-bottom:12px}
+.st{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400}
+.ss{font-size:10px;color:var(--faint);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+
+/* ─── EXAM TABS ─── */
+.etabs{display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;scrollbar-width:none}
+.etabs::-webkit-scrollbar{display:none}
+.et{padding:6px 13px;border-radius:8px;white-space:nowrap;border:1px solid rgba(184,147,74,.2);background:rgba(255,255,255,.03);color:var(--faint);font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .2s;flex-shrink:0;font-family:'Jost',sans-serif;font-weight:400}
+.et.a{background:rgba(184,147,74,.15);border-color:var(--gold);color:var(--gold-l)}
+.ep{display:none}
+.ep.a{display:block}
+
+/* ─── SUBJECT SECTIONS ─── */
+.xsec{margin-bottom:18px}
+.xsh{font-family:'IM Fell English',serif;font-size:12px;letter-spacing:1.2px;color:var(--gold);text-transform:uppercase;margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid rgba(184,147,74,.2);display:flex;align-items:center;gap:6px}
+
+/* ─── PRIORITY ROWS ─── */
+.pr{display:flex;justify-content:space-between;align-items:center;padding:8px 11px;background:rgba(255,255,255,.025);border-radius:8px;margin-bottom:5px;cursor:pointer;transition:all .18s;gap:8px}
+.pr:hover{background:rgba(255,255,255,.05)}
+.pr.done{opacity:.45}
+.pr.done .prn{text-decoration:line-through}
+.prn{font-size:12.5px;color:var(--parchment);flex:1;line-height:1.4}
+.prw{font-size:9.5px;padding:2px 7px;border-radius:10px;font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.4px;white-space:nowrap}
+.w-s{background:rgba(193,123,123,.2);color:var(--rose-l)}.w-h{background:rgba(184,147,74,.15);color:var(--gold-l)}.w-m{background:rgba(107,124,90,.15);color:#9ab888}.w-l{background:rgba(155,139,125,.1);color:var(--faint)}
+.prck{font-size:13px;margin-left:5px;color:var(--faint)}
+.sub-note{font-size:10.5px;color:var(--txt);line-height:1.55;padding:8px 11px;background:rgba(255,255,255,.02);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;margin-bottom:9px;font-style:italic}
+
+/* ─── PHYSICS PAGE ─── */
+.phy-hero{background:linear-gradient(135deg,rgba(122,92,122,.15),rgba(107,124,90,.08));border:1px solid rgba(176,138,176,.25);border-radius:14px;padding:20px;margin-bottom:14px;text-align:center}
+.phy-t{font-family:'Cormorant Garamond',serif;font-size:23px;font-style:italic;margin-bottom:5px}
+.phy-s{font-size:11.5px;color:var(--txt);line-height:1.6}
+.pquote{font-family:'IM Fell English',serif;font-size:13.5px;font-style:italic;color:var(--plum-l);padding:10px 14px;border-left:2px solid var(--plum);margin:12px 0;line-height:1.7}
+.tip-c{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start}
+.tip-ico{font-size:19px;flex-shrink:0;margin-top:1px}
+.tip-tit{font-size:12.5px;font-weight:500;color:var(--parchment);margin-bottom:3px}
+.tip-txt{font-size:11.5px;color:var(--txt);line-height:1.6}
+
+/* ─── COLLEGES PAGE ─── */
+.col-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:15px 16px;margin-bottom:10px;transition:all .2s}
+.col-card:hover{background:rgba(255,255,255,.055);transform:translateY(-1px)}
+.col-rank{font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;font-family:'IM Fell English',serif}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--parchment);margin-bottom:3px}
+.col-loc{font-size:11px;color:var(--faint);margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.col-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.col-chip{font-size:10px;padding:2px 8px;border-radius:6px;font-family:'Jost',sans-serif}
+.cc-fee{background:rgba(107,124,90,.15);color:#9ab888;border:1px solid rgba(107,124,90,.25)}
+.cc-score{background:rgba(184,147,74,.12);color:var(--gold-l);border:1px solid rgba(184,147,74,.22)}
+.cc-type{background:rgba(122,92,122,.15);color:var(--plum-l);border:1px solid rgba(122,92,122,.25)}
+.cc-val{background:rgba(193,123,123,.12);color:var(--rose-l);border:1px solid rgba(193,123,123,.22)}
+.col-note{font-size:11px;color:var(--txt);line-height:1.55}
+.col-link{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--gold-l);text-decoration:none;margin-top:7px;transition:color .2s;letter-spacing:.5px}
+.col-link:hover{color:var(--gold-xl)}
+.worth-banner{background:rgba(184,147,74,.08);border:1px solid rgba(184,147,74,.25);border-radius:8px;padding:10px 13px;margin:10px 0;display:flex;align-items:center;gap:8px}
+.worth-ico{font-size:16px}
+.worth-txt{font-size:11px;color:var(--gold-l);line-height:1.5}
+
+/* ─── COURSES BOARD ─── */
+.course-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:15px 16px;margin-bottom:10px}
+.crs-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;gap:8px}
+.crs-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--parchment)}
+.crs-dur{font-size:10px;color:var(--faint);letter-spacing:1px;margin-top:2px}
+.crs-desc{font-size:11.5px;color:var(--txt);line-height:1.6;margin-bottom:8px}
+.crs-tags{display:flex;flex-wrap:wrap;gap:5px}
+.ctag{font-size:10px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--faint)}
+.ctag.hot{background:rgba(193,123,123,.12);border-color:rgba(193,123,123,.25);color:var(--rose-l)}
+
+/* ─── SECONDARY TABS ─── */
+.stabs{display:flex;gap:5px;overflow-x:auto;padding-bottom:3px;margin-bottom:13px;scrollbar-width:none}
+.stabs::-webkit-scrollbar{display:none}
+.sta{padding:6px 12px;border-radius:8px;white-space:nowrap;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:var(--faint);font-size:10px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .2s;flex-shrink:0;font-family:'Jost',sans-serif}
+.sta.a{background:rgba(176,138,176,.15);border-color:var(--plum);color:var(--plum-l)}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(107,124,90,.9);border:1px solid rgba(154,184,136,.4);color:#d4edc8;padding:9px 18px;border-radius:20px;font-size:11.5px;letter-spacing:.8px;text-align:center;opacity:0;transition:all .3s;z-index:200;backdrop-filter:blur(10px);white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ─── ANIMATIONS ─── */
+.fi{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease}
+.fi.vis{opacity:1;transform:translateY(0)}
+
+.empty{text-align:center;padding:36px 18px}
+.empty-ico{font-size:34px;margin-bottom:8px}
+.empty-t{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--faint)}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="sp-orn">✦</div>
+  <div class="sp-t">Her Sanctuary</div>
+  <div class="sp-s">Study · Thrive · Conquer</div>
+  <div class="sp-line"></div>
+  <button class="sp-btn" onclick="enterApp()">Enter ✦</button>
+</div>
+
+<div id="app" style="display:none">
+
+<!-- HOME -->
+<div id="page-home" class="page a">
+  <div class="hdr">
+    <div class="hdr-top">
+      <div>
+        <div class="hdr-orn">✦ NEET · CUET · ICAR · NEST · IAT</div>
+        <div class="hdr-title">Good day, scholar.</div>
+        <div class="hdr-date" id="today-date"></div>
+      </div>
+      <div class="streak-pill">🔥 <span id="sc">0</span>d</div>
+    </div>
+  </div>
+  <div class="div"><div class="div-l"></div><div class="div-s">✦</div><div class="div-l"></div></div>
+  <div style="padding:0">
+    <div class="mood fi">
+      <div class="mood-t">How are you today, love?</div>
+      <div class="mood-row" id="mood-row">
+        <button class="mb" data-mood="focused" onclick="setMood(this)">🌙<span>focused</span></button>
+        <button class="mb" data-mood="tired" onclick="setMood(this)">🍂<span>tired</span></button>
+        <button class="mb" data-mood="anxious" onclick="setMood(this)">🌿<span>anxious</span></button>
+        <button class="mb" data-mood="on fire" onclick="setMood(this)">✨<span>on fire</span></button>
+        <button class="mb" data-mood="meh" onclick="setMood(this)">🫖<span>meh</span></button>
+      </div>
+    </div>
+    <div class="sg fi">
+      <div class="sc"><div class="sn" id="total-h">0</div><div class="sl">Hours Logged</div></div>
+      <div class="sc"><div class="sn" id="total-d">0</div><div class="sl">Days Logged</div></div>
+      <div class="sc"><div class="sn" id="topics-n">0</div><div class="sl">Topics Done</div></div>
+      <div class="sc"><div class="sn" id="dl">—</div><div class="sl">Days to NEET</div></div>
+    </div>
+    <div class="card fi">
+      <div class="ch"><div class="ct">Subject Progress</div></div>
+      <div id="prog-bars"></div>
+    </div>
+    <div class="card fi">
+      <div class="ch"><div class="ct">28-Day Study Map</div></div>
+      <div class="hmlab"><div class="hml">M</div><div class="hml">T</div><div class="hml">W</div><div class="hml">T</div><div class="hml">F</div><div class="hml">S</div><div class="hml">S</div></div>
+      <div class="hm" id="heatmap"></div>
+    </div>
+    <div class="mantra fi">
+      <div class="mantra-t" id="mt"></div>
+      <div class="mantra-a" id="ma"></div>
+      <button class="mantra-btn" onclick="newMantra()">new mantra ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOG -->
+<div id="page-log" class="page">
+  <div class="sh"><div class="st">Daily Log</div><div class="ss">every session · remembered forever</div></div>
+  <div class="lf">
+    <div class="lft">✦ Log a Session</div>
+    <div class="ig"><label class="il">Subject</label>
+      <select class="si" id="ls"><option value="">Choose subject...</option>
+        <option>Biology — Botany</option><option>Biology — Zoology</option>
+        <option>Chemistry — Organic</option><option>Chemistry — Inorganic</option><option>Chemistry — Physical</option>
+        <option>Physics — Mechanics</option><option>Physics — Electricity & Magnetism</option>
+        <option>Physics — Modern Physics</option><option>Physics — Optics & Waves</option><option>Physics — Thermodynamics</option>
+        <option>Maths (NEST/IAT)</option><option>CUET English</option><option>CUET General Test</option>
+        <option>Mock Test / PYQs</option><option>Revision</option>
+      </select>
+    </div>
+    <div class="ig"><label class="il">Topics Covered</label><input type="text" class="ti" id="lt" placeholder="e.g. Mendelian genetics, DNA replication..."></div>
+    <div class="ig"><label class="il">Hours Studied</label><input type="number" class="ti" id="lh" placeholder="2.5" min="0.5" max="14" step="0.5"></div>
+    <div class="ig"><label class="il">Notes & Reflections</label><textarea class="ta" id="ln" placeholder="What clicked? What needs more work? Any doubts?"></textarea></div>
+    <div class="ig"><label class="il">Confidence</label>
+      <select class="si" id="lc"><option value="3">✨ Felt strong</option><option value="2">📖 Getting there</option><option value="1">🌱 Struggled but showed up</option></select>
+    </div>
+    <button class="sb" onclick="saveLog()">Save Session ✦</button>
+  </div>
+  <div class="sh"><div class="st" style="font-size:16px">Session History</div></div>
+  <div id="log-list"><div class="empty"><div class="empty-ico">🕯️</div><div class="empty-t">No sessions yet.<br>Begin your journey today.</div></div></div>
+</div>
+
+<!-- EXAMS -->
+<div id="page-exams" class="page">
+  <div class="sh"><div class="st">Exam Blueprints</div><div class="ss">deep topic breakdown · priority levels</div></div>
+  <div class="etabs">
+    <button class="et a" onclick="switchExam(this,'neet')">NEET</button>
+    <button class="et" onclick="switchExam(this,'cuet')">CUET</button>
+    <button class="et" onclick="switchExam(this,'icar')">ICAR</button>
+    <button class="et" onclick="switchExam(this,'nest')">NEST</button>
+    <button class="et" onclick="switchExam(this,'iat')">IAT</button>
+  </div>
+
+  <!-- NEET -->
+  <div id="exam-neet" class="ep a">
+    <div class="card" style="border-color:rgba(193,123,123,.3);margin-bottom:14px">
+      <div style="font-size:12px;color:var(--txt);line-height:1.7"><strong style="color:var(--rose-l)">720 marks · 180 MCQs · 3h 20m</strong><br>Biology = 50% of total score (360 marks). Physics + Chemistry = 25% each (180 marks). <strong style="color:var(--gold-l)">Class 12 carries ~70% weightage in Physics, ~80% in Biology.</strong> Master NCERT line by line — most questions are verbatim NCERT.</div>
+    </div>
+    <!-- NEET Biology Botany -->
+    <div class="xsec">
+      <div class="xsh">🌱 Botany — ~45 Questions</div>
+      <div class="sub-note">Class 12 Botany carries the heavier load. Genetics + Biotechnology alone can fetch 12–15 marks. Don't skip a single diagram.</div>
+      <div id="neet-bot"></div>
+    </div>
+    <!-- NEET Biology Zoology -->
+    <div class="xsec">
+      <div class="xsh">🦋 Zoology — ~45 Questions</div>
+      <div class="sub-note">Human Physiology is the single biggest Zoology chapter. Every system (digestion, respiration, circulation, excretion, nervous) appears every year.</div>
+      <div id="neet-zoo"></div>
+    </div>
+    <!-- NEET Chemistry -->
+    <div class="xsec">
+      <div class="xsh">⚗️ Chemistry — 45 Questions · 180 marks</div>
+      <div class="sub-note">Organic Chemistry has the highest weightage (26%). Reaction mechanisms + named reactions are the key. Physical Chemistry numerical need daily practice.</div>
+      <div id="neet-chem"></div>
+    </div>
+    <!-- NEET Physics -->
+    <div class="xsec">
+      <div class="xsh">⚡ Physics — 45 Questions · 180 marks</div>
+      <div class="sub-note">Class 12 Physics = ~70% of this section. Electrostatics + Current Electricity alone = 8–10 questions historically. You don't need to love it — just be strategic.</div>
+      <div id="neet-phys"></div>
+    </div>
+  </div>
+
+  <!-- CUET -->
+  <div id="exam-cuet" class="ep">
+    <div class="card" style="border-color:rgba(184,147,74,.3);margin-bottom:14px">
+      <div style="font-size:12px;color:var(--txt);line-height:1.7">Computer-based · <strong style="color:var(--gold-l)">50 MCQs per section (45 to attempt)</strong> · 4 marks each · 1 mark negative. Domain subjects (Biology/Chem/Phys) are <strong style="color:var(--parchment)">~90% NEET-identical</strong>. Focus extra time on English + General Test.</div>
+    </div>
+    <div class="xsec"><div class="xsh">🧬 Biology (Domain)</div><div id="cuet-bio"></div></div>
+    <div class="xsec"><div class="xsh">⚗️ Chemistry (Domain)</div><div id="cuet-chem"></div></div>
+    <div class="xsec"><div class="xsh">⚡ Physics (Domain)</div><div id="cuet-phys"></div></div>
+    <div class="xsec"><div class="xsh">📖 English Section</div><div class="sub-note">20–25 min daily from Jan onwards is enough. Prioritize RC passages — they're 60% of the section.</div><div id="cuet-eng"></div></div>
+    <div class="xsec"><div class="xsh">🌍 General Test</div><div class="sub-note">Current affairs (last 6 months) + basic Class 10 maths + logical reasoning. Low-effort but essential for central university admissions.</div><div id="cuet-gt"></div></div>
+  </div>
+
+  <!-- ICAR -->
+  <div id="exam-icar" class="ep">
+    <div class="card" style="border-color:rgba(107,124,90,.3);margin-bottom:14px">
+      <div style="font-size:12px;color:var(--txt);line-height:1.7"><strong style="color:#9ab888">150 MCQs · 2 hours.</strong> If choosing PCB stream → this is essentially a NEET retest. Almost zero extra preparation needed. The ICAR ranking for agriculture colleges is a separate strong pathway for biology lovers.</div>
+    </div>
+    <div class="xsec"><div class="xsh">🌾 Biology Focus (ICAR PCB)</div><div id="icar-bio"></div></div>
+    <div class="xsec"><div class="xsh">⚗️ Chemistry Focus</div><div id="icar-chem"></div></div>
+    <div class="xsec"><div class="xsh">⚡ Physics Focus</div><div id="icar-phys"></div></div>
+    <div class="xsec"><div class="xsh">🌱 Agriculture Basics (if choosing Agri stream)</div><div class="sub-note">Only relevant if opting for BSc Agriculture pathway. Most PCB students skip this entirely.</div><div id="icar-agri"></div></div>
+  </div>
+
+  <!-- NEST -->
+  <div id="exam-nest" class="ep">
+    <div class="card" style="border-color:rgba(122,92,122,.3);margin-bottom:14px">
+      <div style="font-size:12px;color:var(--txt);line-height:1.7">For <strong style="color:var(--plum-l)">NISER Bhubaneswar + UM-DAE CEBS Mumbai.</strong> NEST is harder than NEET — conceptual depth + application. Best 3 out of 4 sections counted. Sectional cutoffs exist — you can't ignore any subject. ~₹20K/year fees + ₹80K annual scholarship!</div>
+    </div>
+    <div class="xsec"><div class="xsh">🧬 Biology (NEST)</div><div class="sub-note">Goes beyond NCERT — expects you to reason from first principles. Genetics problems are more complex. Ecology questions involve data interpretation.</div><div id="nest-bio"></div></div>
+    <div class="xsec"><div class="xsh">⚗️ Chemistry (NEST)</div><div id="nest-chem"></div></div>
+    <div class="xsec"><div class="xsh">⚡ Physics (NEST)</div><div id="nest-phys"></div></div>
+    <div class="xsec"><div class="xsh">📐 Mathematics (NEST)</div><div class="sub-note">Full Class 11+12 Maths syllabus. If Maths is weak, aim for top 3 in Bio+Chem+Phys to cover the sectional cutoff.</div><div id="nest-math"></div></div>
+  </div>
+
+  <!-- IAT -->
+  <div id="exam-iat" class="ep">
+    <div class="card" style="border-color:rgba(176,138,176,.3);margin-bottom:14px">
+      <div style="font-size:12px;color:var(--txt);line-height:1.7"><strong style="color:var(--plum-l)">IISER Aptitude Test</strong> — one exam, 7 IISERs + IISc. 60 questions · 4 sections (15 each) · 3 hours. High reasoning difficulty. BS-MS 5-year dual degree. Fees ~₹80–90K/year. Globally respected for research career pathways.</div>
+    </div>
+    <div class="xsec"><div class="xsh">🧬 Biology (IAT)</div><div class="sub-note">Expect inference-based Qs on genetics, ecology, evolution. Reading scientific data tables is a key skill tested here.</div><div id="iat-bio"></div></div>
+    <div class="xsec"><div class="xsh">⚗️ Chemistry (IAT)</div><div id="iat-chem"></div></div>
+    <div class="xsec"><div class="xsh">⚡ Physics (IAT)</div><div id="iat-phys"></div></div>
+    <div class="xsec"><div class="xsh">📐 Mathematics (IAT)</div><div class="sub-note">Strong Maths is your biggest differentiator here. Calculus, Algebra, Coordinate Geometry — don't skip any.</div><div id="iat-math"></div></div>
+  </div>
+</div>
+
+<!-- PHYSICS HELP -->
+<div id="page-physics" class="page">
+  <div class="phy-hero">
+    <div class="phy-t">Physics is not your enemy.</div>
+    <div class="phy-s">It is a language. And right now, you're learning to speak it fluently.<br>Every NEET topper once stood exactly where you are.</div>
+  </div>
+  <div class="pquote">"In NEET 2024, ~35 Physics questions had direct parallels in PYQs. That's 140 marks hiding in plain sight — yours for the taking."</div>
+  <div class="sh" style="padding:0"><div class="st" style="font-size:18px">Your Physics Gameplan ✦</div></div>
+  <div class="tip-c fi"><div class="tip-ico">🎯</div><div><div class="tip-tit">PYQs before theory</div><div class="tip-txt">See what NEET actually asks before reading the chapter. You'll realize 70% of questions are doable — fear comes from imagining hard questions, not reading real ones.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">📐</div><div><div class="tip-tit">One formula, understood deeply</div><div class="tip-txt">Don't memorize 20 formulas in a sitting. Take F = ma. Know what each symbol means. Draw it. Derive it. Apply it in 2 MCQs. Then move on. Quality over quantity.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">🧩</div><div><div class="tip-tit">Formula wall / phone wallpaper</div><div class="tip-txt">Write all formulas from one chapter on a page. Photograph it as your lock screen. You'll see it 40 times a day without trying. This one habit = 20+ marks.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">🔁</div><div><div class="tip-tit">3 MCQs minimum, every single day</div><div class="tip-txt">Not 30. Just 3 Physics MCQs daily. Consistency beats intensity here. In 60 days that's 180 solved questions — more than one full exam worth of practice.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">📺</div><div><div class="tip-tit">Physics Wallah (Alakh Sir) on YouTube</div><div class="tip-txt">Watch the concept video before reading NCERT. His visual + bilingual approach makes circuits and mechanics feel obvious. Free and genuinely brilliant.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">⏭️</div><div><div class="tip-tit">Skip → Flag → Return in exam</div><div class="tip-txt">Never freeze on a Physics question. Skip it immediately. Your brain will process it subconsciously while you answer Biology. Return with fresh eyes.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">💯</div><div><div class="tip-tit">Target 100–120 out of 180, not full marks</div><div class="tip-txt">You don't need perfect Physics to crack NEET. Target Electrostatics + Current Electricity + Modern Physics + Optics — these 4 topics alone can give you 80+ marks.</div></div></div>
+  <div class="tip-c fi"><div class="tip-ico">🧠</div><div><div class="tip-tit">Dimensional analysis as a lifeline</div><div class="tip-txt">If you forget a formula in exam, derive it using dimensional analysis. This technique alone has saved thousands of students from losing Physics marks they would've otherwise gotten.</div></div></div>
+  <div style="margin-top:16px" class="sh"><div class="st" style="font-size:18px">High-Yield Topics ✦</div><div class="ss">master these · secure your score</div></div>
+  <div id="phy-check"></div>
+</div>
+
+<!-- COLLEGES & COURSES -->
+<div id="page-college" class="page">
+  <div class="sh"><div class="st">After the Exams ✦</div><div class="ss">colleges · courses · your future</div></div>
+  <div class="stabs">
+    <button class="sta a" onclick="switchCollege(this,'neet-col')">NEET Colleges</button>
+    <button class="sta" onclick="switchCollege(this,'cuet-col')">CUET Colleges</button>
+    <button class="sta" onclick="switchCollege(this,'icar-col')">ICAR Colleges</button>
+    <button class="sta" onclick="switchCollege(this,'nest-col')">NEST/IAT Colleges</button>
+    <button class="sta" onclick="switchCollege(this,'courses')">Courses Board</button>
+  </div>
+
+  <!-- NEET COLLEGES -->
+  <div id="neet-col" class="ep a" id="neet-col-panel"></div>
+
+  <!-- CUET COLLEGES -->
+  <div id="cuet-col" class="ep"></div>
+
+  <!-- ICAR COLLEGES -->
+  <div id="icar-col" class="ep"></div>
+
+  <!-- NEST/IAT COLLEGES -->
+  <div id="nest-col" class="ep"></div>
+
+  <!-- COURSES BOARD -->
+  <div id="courses" class="ep"></div>
+</div>
+
+</div><!-- end app -->
+
+<nav class="nav">
+  <button class="ni a" onclick="showPage('home',this)"><span class="nic">🏠</span>Home</button>
+  <button class="ni" onclick="showPage('log',this)"><span class="nic">📖</span>Log</button>
+  <button class="ni" onclick="showPage('exams',this)"><span class="nic">📋</span>Exams</button>
+  <button class="ni" onclick="showPage('physics',this)"><span class="nic">⚡</span>Physics</button>
+  <button class="ni" onclick="showPage('college',this)"><span class="nic">🏛️</span>After</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── TOPIC DATA ───
+const D = {
+neetBot:[
+  {n:'Genetics & Molecular Biology — DNA Structure, Replication, Transcription',w:'s'},
+  {n:'Genetics — Mendelian Laws, Codominance, Linkage, Mutations',w:'s'},
+  {n:'Biotechnology — Principles, Tools, rDNA Technology',w:'s'},
+  {n:'Biotechnology Applications — GMO, BT Crops, Gene Therapy',w:'s'},
+  {n:'Reproduction in Flowering Plants — Pollination, Fertilization, Embryology',w:'h'},
+  {n:'Cell Biology — Cell Cycle, Mitosis, Meiosis (diagrams critical!)',w:'h'},
+  {n:'Ecology — Ecosystem, Energy Flow, Nutrient Cycles',w:'h'},
+  {n:'Biodiversity & Conservation — Hotspots, Ex-situ, In-situ',w:'h'},
+  {n:'Plant Kingdom — Classification, Bryophytes to Angiosperms',w:'m'},
+  {n:'Plant Physiology — Photosynthesis (Light + Dark reactions)',w:'m'},
+  {n:'Plant Physiology — Respiration (Glycolysis, Krebs, ETC)',w:'m'},
+  {n:'Plant Growth & Development — Hormones, Photoperiodism',w:'m'},
+  {n:'Morphology of Flowering Plants — Root, Stem, Leaf, Flower',w:'l'},
+  {n:'Anatomy of Flowering Plants — Tissues, Meristems',w:'l'},
+],
+neetZoo:[
+  {n:'Human Physiology — Digestion & Absorption (full NCERT)',w:'s'},
+  {n:'Human Physiology — Breathing & Gas Exchange',w:'s'},
+  {n:'Human Physiology — Body Fluids & Circulation',w:'s'},
+  {n:'Human Physiology — Excretory Products & their Elimination',w:'s'},
+  {n:'Human Physiology — Neural Control & Coordination',w:'s'},
+  {n:'Human Reproduction — Male + Female Anatomy, Fertilization',w:'s'},
+  {n:'Reproductive Health — Contraception, STDs, IVF',w:'h'},
+  {n:'Origin & Evolution — Theories, Evidence, Hardy-Weinberg',w:'h'},
+  {n:'Human Health & Disease — Immunity, Cancer, AIDS, Drugs',w:'h'},
+  {n:'Microbes in Human Welfare — Biogas, Sewage, Antibiotics',w:'h'},
+  {n:'Animal Kingdom — Classification, Phyla Characteristics',w:'m'},
+  {n:'Structural Organization in Animals — Earthworm, Cockroach',w:'m'},
+  {n:'Biomolecules — Enzymes, Proteins, Lipids, Carbohydrates',w:'m'},
+  {n:'Strategies for Enhancement in Food Production — Animal Husbandry',w:'l'},
+],
+neetChem:[
+  {n:'Chemical Bonding & Molecular Structure — VSEPR, Hybridization, MO Theory',w:'s'},
+  {n:'Coordination Compounds — IUPAC, Bonding, Isomerism',w:'s'},
+  {n:'Organic Chemistry — Reaction Mechanisms (SN1, SN2, E1, E2)',w:'s'},
+  {n:'Carbonyl Compounds — Aldehydes, Ketones, Carboxylic Acids & Derivatives',w:'s'},
+  {n:'Chemical Kinetics — Rate Laws, Activation Energy, Arrhenius',w:'h'},
+  {n:'Electrochemistry — EMF, Nernst Equation, Faraday\'s Laws',w:'h'},
+  {n:'Hydrocarbons — Alkanes, Alkenes, Alkynes, Benzene + Aromaticity',w:'h'},
+  {n:'p-Block Elements — Groups 15, 16, 17, 18 (all reactions)',w:'h'},
+  {n:'d & f Block Elements — Properties, Catalytic Activity',w:'h'},
+  {n:'Thermodynamics — Laws, Enthalpy, Entropy, Gibbs Free Energy',w:'m'},
+  {n:'Equilibrium — Chemical + Ionic, Buffer Solutions, pH',w:'m'},
+  {n:'Solutions — Colligative Properties, Raoult\'s Law',w:'m'},
+  {n:'Biomolecules — Carbohydrates, Proteins, Vitamins, Hormones',w:'m'},
+  {n:'Polymers + Chemistry in Everyday Life',w:'l'},
+  {n:'Alcohols, Phenols, Ethers — Reactions + Properties',w:'l'},
+  {n:'Amines — Classification, Reactions, Diazonium Salts',w:'l'},
+],
+neetPhys:[
+  {n:'Electrostatics — Coulomb\'s Law, Electric Field, Potential, Gauss\'s Law',w:'s'},
+  {n:'Current Electricity — Ohm\'s Law, Kirchhoff\'s, Wheatstone Bridge, RC Circuits',w:'s'},
+  {n:'Moving Charges & Magnetism — Biot-Savart, Ampere\'s Law, Force on Charge',w:'s'},
+  {n:'Modern Physics — Photoelectric Effect, de Broglie, Hydrogen Atom',w:'s'},
+  {n:'Nuclei — Radioactivity, Nuclear Reactions, Binding Energy',w:'s'},
+  {n:'Semiconductor Electronics — Diodes, Transistors, Logic Gates',w:'s'},
+  {n:'Ray Optics — Reflection, Refraction, Lenses, Mirrors (all formulas)',w:'h'},
+  {n:'Wave Optics — Young\'s Experiment, Diffraction, Polarization',w:'h'},
+  {n:'Electromagnetic Induction — Faraday\'s, Lenz\'s, Self + Mutual Inductance',w:'h'},
+  {n:'Alternating Current — RLC Circuits, Resonance, Transformers',w:'h'},
+  {n:'Thermodynamics — Laws, Processes, Efficiency, Carnot Engine',w:'h'},
+  {n:'Laws of Motion — Newton\'s Laws, Friction, Circular Motion',w:'m'},
+  {n:'Work, Energy & Power — Conservative Forces, Collisions',w:'m'},
+  {n:'Rotational Motion — Torque, MOI, Angular Momentum',w:'m'},
+  {n:'Kinematics — 1D, 2D, Projectile, Relative Motion',w:'m'},
+  {n:'Gravitation — Kepler\'s Laws, Escape Velocity, Satellites',w:'m'},
+  {n:'Oscillations — SHM, Spring-Mass, Pendulum',w:'l'},
+  {n:'Waves — Standing Waves, Doppler Effect',w:'l'},
+],
+cuetBio:[
+  {n:'Entire NCERT Class 12 Biology (Chapters 1–16)',w:'s'},
+  {n:'Genetics + Biotechnology (same as NEET — high score zone)',w:'s'},
+  {n:'Human Physiology — all systems (same as NEET)',w:'s'},
+  {n:'Ecology — Ecosystems + Biodiversity (same as NEET)',w:'h'},
+  {n:'NCERT Class 11 Biology basics — Cell, Biomolecules, Plant Kingdom',w:'m'},
+],
+cuetChem:[
+  {n:'NCERT Class 12 Chemistry — all chapters (direct overlap with NEET)',w:'s'},
+  {n:'Organic Chemistry reactions (same as NEET)',w:'s'},
+  {n:'Class 11 Chemistry — Atomic Structure, Periodic Table, Bonding',w:'h'},
+  {n:'Physical Chemistry numericals (Thermodynamics, Equilibrium, Solutions)',w:'h'},
+],
+cuetPhys:[
+  {n:'NCERT Class 12 Physics — all chapters',w:'s'},
+  {n:'Electrostatics + Current Electricity (highest CUET weightage)',w:'s'},
+  {n:'Modern Physics — Dual Nature, Nuclei, Semiconductors',w:'h'},
+  {n:'Class 11 Physics — Laws of Motion, Kinematics, Thermodynamics',w:'m'},
+],
+cuetEng:[
+  {n:'Reading Comprehension — factual, literary, discursive passages',w:'s'},
+  {n:'Vocabulary in context — idioms, phrases, word meanings',w:'h'},
+  {n:'Grammar — Error spotting, Sentence correction, Fillers',w:'h'},
+  {n:'Rearrangement of sentences / paragraphs',w:'m'},
+  {n:'Summary writing / short answer reading',w:'m'},
+],
+cuetGT:[
+  {n:'Current Affairs — past 6 months (static + dynamic GK)',w:'s'},
+  {n:'Quantitative Reasoning — Class 10 Maths level (Percentages, Ratio, Averages)',w:'h'},
+  {n:'General Mental Ability & Logical Reasoning',w:'h'},
+  {n:'India-specific GK — polity, economy, science achievements',w:'m'},
+  {n:'World GK — international organizations, awards',w:'l'},
+],
+icarBio:[
+  {n:'All NEET Biology chapters — identical syllabus',w:'s'},
+  {n:'Genetics + Biotechnology (highest scoring in ICAR too)',w:'s'},
+  {n:'Human Physiology all systems (same priority)',w:'s'},
+  {n:'Ecology + Environment (always appears)',w:'h'},
+  {n:'Cell Biology + Biomolecules',w:'m'},
+],
+icarChem:[
+  {n:'Organic Chemistry — mechanisms, named reactions',w:'s'},
+  {n:'Chemical Bonding + Coordination Compounds',w:'h'},
+  {n:'Physical Chemistry numericals',w:'h'},
+  {n:'Inorganic Chemistry — p-block, d-block',w:'m'},
+],
+icarPhys:[
+  {n:'Electrostatics + Current Electricity',w:'s'},
+  {n:'Modern Physics',w:'h'},
+  {n:'Optics (Ray + Wave)',w:'h'},
+  {n:'Mechanics (Class 11)',w:'m'},
+],
+icarAgri:[
+  {n:'Crop Production & Management — Kharif vs Rabi crops',w:'m'},
+  {n:'Soil Science basics — pH, nutrients, fertilisers',w:'m'},
+  {n:'Agricultural technologies — irrigation, pest control',w:'l'},
+  {n:'Animal Husbandry — breeds, dairy, poultry',w:'l'},
+],
+nestBio:[
+  {n:'Genetics — Mendelian + Molecular, Linkage maps, Epistasis',w:'s'},
+  {n:'Cell Biology — Cell cycle regulation, Apoptosis, Signal transduction',w:'s'},
+  {n:'Evolutionary Biology — Phylogenetics, Speciation, Microevolution',w:'s'},
+  {n:'Ecology — Population dynamics, Community interactions, Data analysis',w:'h'},
+  {n:'Physiology — Biochemical pathways, Enzyme kinetics',w:'h'},
+  {n:'Developmental Biology — Embryonic development, Fate maps',w:'h'},
+  {n:'Microbiology — Bacterial genetics, Phage biology',w:'m'},
+  {n:'Immunology basics — Antibodies, B cells, T cells',w:'m'},
+  {n:'All NEET Biology topics as foundation',w:'h'},
+],
+nestChem:[
+  {n:'Organic reaction mechanisms — deep conceptual understanding',w:'s'},
+  {n:'Inorganic Chemistry — periodic trends, MO Theory, complex ions',w:'s'},
+  {n:'Physical Chemistry — Thermodynamics, Kinetics, Electrochemistry numericals',w:'h'},
+  {n:'Spectroscopy basics — IR, NMR interpretation (beyond NCERT)',w:'m'},
+  {n:'NCERT Class 11+12 Chemistry as foundation',w:'h'},
+],
+nestPhys:[
+  {n:'Electromagnetism — Derivations from first principles',w:'s'},
+  {n:'Modern Physics — Quantum mechanics intuition, Photoelectric effect',w:'s'},
+  {n:'Mechanics — Advanced numericals, Rotational dynamics',w:'h'},
+  {n:'Thermodynamics — Carnot cycle, Statistical mechanics basics',w:'h'},
+  {n:'Optics — Wave optics, Diffraction gratings',w:'m'},
+  {n:'All NEET Physics chapters at conceptual depth',w:'h'},
+],
+nestMath:[
+  {n:'Calculus — Differentiation, Integration (all standard techniques)',w:'s'},
+  {n:'Algebra — Polynomials, Matrices, Determinants, Complex Numbers',w:'s'},
+  {n:'Coordinate Geometry — Conics, Lines, Circles',w:'h'},
+  {n:'Trigonometry — Identities, Inverse trig, Applications',w:'h'},
+  {n:'Probability + Statistics',w:'h'},
+  {n:'Vectors + 3D Geometry',w:'m'},
+  {n:'Permutation & Combination',w:'m'},
+],
+iatBio:[
+  {n:'Genetics — Mendelian + Molecular (same as NEST but inference-based)',w:'s'},
+  {n:'Cell Biology — Detailed organelle functions, Cell signaling',w:'s'},
+  {n:'Ecology + Evolution — Data interpretation, Hardy-Weinberg',w:'s'},
+  {n:'Human Physiology — Systems-level integration questions',w:'h'},
+  {n:'Plant Biology — Photosynthesis + Transport mechanisms',w:'h'},
+  {n:'Microbiology + Immunology basics',w:'m'},
+],
+iatChem:[
+  {n:'Organic Chemistry — Mechanism-based reasoning',w:'s'},
+  {n:'Chemical Bonding — MO Theory, Hybridization edge cases',w:'s'},
+  {n:'Physical Chemistry — Advanced numericals, Equilibrium',w:'h'},
+  {n:'Inorganic Chemistry — Coordination chemistry, d-block',w:'h'},
+  {n:'Analytical Chemistry — Qualitative + Quantitative analysis concepts',w:'m'},
+],
+iatPhys:[
+  {n:'Electromagnetism — Maxwell\'s equations conceptually',w:'s'},
+  {n:'Classical Mechanics — Lagrangian intuition, Conservation laws',w:'s'},
+  {n:'Modern Physics — Wave-particle duality, de Broglie, Uncertainty',w:'h'},
+  {n:'Thermodynamics — All laws + Carnot + entropy',w:'h'},
+  {n:'Optics — Interference, Diffraction, Polarization',w:'m'},
+  {n:'Fluid Mechanics + Properties of Matter',w:'m'},
+],
+iatMath:[
+  {n:'Calculus — Limits, Differentiation, Integration, Differential Equations',w:'s'},
+  {n:'Algebra — Matrices, Determinants, Complex Numbers, Quadratics',w:'s'},
+  {n:'Coordinate Geometry — All conics',w:'h'},
+  {n:'Trigonometry — Comprehensive',w:'h'},
+  {n:'Probability + Statistics + Combinatorics',w:'h'},
+  {n:'Number Theory basics',w:'m'},
+],
+physCheck:[
+  {n:'Electrostatics — Coulomb, Gauss, Electric Potential, Capacitors',w:'s'},
+  {n:'Current Electricity — Kirchhoff\'s, Wheatstone, Potentiometer',w:'s'},
+  {n:'Moving Charges + Magnetism — all formulae',w:'s'},
+  {n:'Modern Physics — Photoelectric, de Broglie, Bohr, Nuclei',w:'s'},
+  {n:'Semiconductor Electronics — PN Diode, Zener, Transistor, Logic Gates',w:'s'},
+  {n:'Ray Optics — Mirror + Lens formula, TIR, Optical instruments',w:'h'},
+  {n:'EMI — Faraday, Lenz, Self Inductance, Transformer',w:'h'},
+  {n:'Thermodynamics — All four laws + Carnot efficiency',w:'h'},
+  {n:'Wave Optics — Young\'s YDSE, Diffraction, Brewster\'s',w:'h'},
+  {n:'Laws of Motion — Newton\'s 3 laws, Friction types, Circular motion',w:'h'},
+  {n:'Work-Energy-Power — Conservative forces, Elastic + inelastic collisions',w:'m'},
+  {n:'Rotational Motion — Torque, MOI, Rolling without slipping',w:'m'},
+  {n:'Kinematics — SUVAT equations, Projectile, Relative velocity',w:'m'},
+  {n:'Gravitation — Kepler\'s, Escape Velocity, Orbital velocity',w:'m'},
+  {n:'Alternating Current — RMS, RLC, Resonance, Power factor',w:'m'},
+  {n:'Dual Nature of Matter (links Modern Physics)',w:'m'},
+  {n:'Oscillations — SHM equation, Energy in SHM',w:'l'},
+  {n:'Waves — Standing waves, Beats, Doppler Effect',w:'l'},
+]
+};
+
+// ─── COLLEGES DATA ───
+const COLLEGES = {
+neet:[
+  {rank:'NIRF #1',name:'AIIMS New Delhi',loc:'New Delhi',fee:'~₹6,000 total (5.5 yrs)',cut:'Rank 1–50',type:'Govt',val:'The Gold Standard',note:'Unmatched research + clinical exposure. Produces most NEET-PG toppers. Minimal fees — nearly free. Dream destination.',link:'https://www.aiims.edu'},
+  {rank:'NIRF #2',name:'JIPMER Puducherry',loc:'Puducherry',fee:'~₹30,000 total',cut:'Top 200',type:'Govt',val:'Outstanding Value',note:'Residential campus, excellent patient flow. INR 12 LPA average placement (highest ROI among govt colleges). Beautiful campus.',link:'https://jipmer.edu.in'},
+  {rank:'NIRF #3',name:'CMC Vellore',loc:'Tamil Nadu',fee:'₹3–5 Lakh (5.5 yrs)',cut:'Top 500',type:'Private Charitable',val:'Worth Every Rupee',note:'The only private college with govt-comparable fees. Exceptional faculty, real clinical experience. Consistently top-ranked for a reason.',link:'https://www.cmch-vellore.edu'},
+  {rank:'NIRF #4',name:'PGIMER Chandigarh',loc:'Chandigarh',fee:'~₹15,000 total',cut:'Top 300',type:'Govt',val:'Outstanding Value',note:'Excellent PG research institute. Strong postgraduate pathway. Limited UG seats.',link:'https://pgimer.edu.in'},
+  {rank:'NIRF #5',name:'MAMC New Delhi',loc:'New Delhi',fee:'₹1 Lakh total',cut:'Top 500',type:'Govt',val:'Best Value Delhi',note:'Maulana Azad Medical College — strong govt hospital exposure in capital city.',link:'https://mamc.ac.in'},
+  {rank:'Top Tier',name:'VMMC New Delhi (Safdarjung)',loc:'New Delhi',fee:'~₹80,000 total',cut:'Rank 100–200',type:'Govt',val:'Best Value Delhi',note:'Vardhman Mahavir Medical College. Among the most sought-after government seats in Delhi. Excellent hospital exposure.',link:'https://vmmc.edu.in'},
+  {rank:'Top Private',name:'St. John\'s Medical College',loc:'Bengaluru',fee:'~₹8–10 Lakh (5.5 yrs)',cut:'600+ marks',type:'Private Charitable',val:'⭐ Budget Private Pick',note:'Rare private college with reasonable fees. Well-regarded in south India. Strong clinical training. Worth Mention for economical private options.',link:'https://stjohns.in'},
+  {rank:'Top 10',name:'Kasturba Medical College (Manipal)',loc:'Manipal, Karnataka',fee:'₹45–55 Lakh total',cut:'580+ marks',type:'Private',val:'Premium Private',note:'Globally recognized, strong research, international tie-ups. Expensive but strong value for money if targeting international PG.',link:'https://manipal.edu/kmc'},
+  {rank:'Top 10',name:'BHU Medical College (IMS-BHU)',loc:'Varanasi, UP',fee:'~₹30,000 total',cut:'Top 1000',type:'Govt Central',val:'Underrated Gem',note:'Banaras Hindu University hospital — massive patient flow, central govt fees, excellent campus. Hugely underrated pick.',link:'https://bhu.ac.in/ims'},
+  {rank:'Top 12',name:'KGMU Lucknow',loc:'Lucknow, UP',fee:'~₹50,000 total',cut:'Top 1500',type:'Govt State',val:'North India Value',note:'King George\'s Medical University — 100+ year legacy. Outstanding clinical training. Reasonable state quota access for UP students.',link:'https://kgmu.org'},
+  {rank:'Affordable Pick',name:'Govt Medical College Mumbai (GMC)',loc:'Mumbai, Maharashtra',fee:'~₹40,000/yr (State quota)',cut:'State rank dependent',type:'Govt State',val:'⭐ Economical Mention',note:'Sir JJ Group Hospital affiliation — best clinical exposure in Mumbai at near-zero state quota fees. Highly competitive.',link:'https://gmcmumbai.ac.in'},
+  {rank:'Top South India',name:'Madras Medical College',loc:'Chennai, Tamil Nadu',fee:'~₹15,000/yr (State)',cut:'TN State rank',type:'Govt State',val:'Best TN Pick',note:'Oldest medical college in India (1835). Iconic alumni, massive government hospital network. Among the best public hospitals in India.',link:'https://mmc.tn.gov.in'},
+  {rank:'Top Private',name:'Sri Ramachandra (SRMC)',loc:'Chennai, Tamil Nadu',fee:'₹40–50 Lakh total',cut:'600+ marks',type:'Private Deemed',val:'South India Premium',note:'Multi-specialty hospital-linked, strong research culture. Well respected for quality education.',link:'https://sriramachandra.edu.in'},
+  {rank:'Good Private',name:'Amrita School of Medicine',loc:'Coimbatore, Tamil Nadu',fee:'₹55–70 Lakh total',cut:'600+ marks',type:'Private Deemed',val:'Research-Focused',note:'Amrita Institute — strong research infrastructure, spiritual + academic environment. NAAC A++ rated.',link:'https://www.amrita.edu/school-of-medicine'},
+  {rank:'⭐ Value Pick',name:'GMERS Medical Colleges (Gujarat)',loc:'Multiple, Gujarat',fee:'₹2–4 Lakh total (state)',cut:'Gujarat state rank',type:'Govt State',val:'⭐ Most Economical',note:'Gujarat Medical Education & Research Society — affordable govt colleges across Gujarat. Excellent value for Gujarat domicile students. Highly recommended economical option.',link:'https://gmers.gujarat.gov.in'},
+],
+cuet:[
+  {rank:'#1 NIRF',name:'University of Delhi — LSR, St. Stephen\'s, Miranda House',loc:'Delhi',fee:'₹15,000–30,000/yr',cut:'95%+ in Class 12',type:'Central Uni',val:'Iconic',note:'Delhi University colleges for BSc (Hons) Biology, Chemistry. Miranda House (#1 women\'s college in India). LSR has exceptional biology department. Prestigious, affordable, unmatched alumni.',link:'https://du.ac.in'},
+  {rank:'#2',name:'Jawaharlal Nehru University (JNU)',loc:'New Delhi',fee:'~₹5,000/yr (fully subsidized)',cut:'High CUET score',type:'Central Uni',val:'⭐ Most Economical',note:'School of Life Sciences is world-class for research. Almost free education + great hostel facilities. Best research culture in India for science. Highly underrated for CUET.',link:'https://www.jnu.ac.in'},
+  {rank:'Top 3',name:'Banaras Hindu University (BHU)',loc:'Varanasi, UP',fee:'~₹10,000–20,000/yr',cut:'Good CUET score',type:'Central Uni',val:'⭐ Best Value',note:'One of India\'s largest residential universities. Excellent science departments, affordable fees, ICAR-linked for agriculture. Vibrant campus life. Worth every mention.',link:'https://www.bhu.ac.in'},
+  {rank:'Top 5',name:'Aligarh Muslim University (AMU)',loc:'Aligarh, UP',fee:'~₹15,000/yr',cut:'Moderate CUET',type:'Central Uni',val:'Good Value',note:'AMU Faculty of Life Sciences has a strong research tradition. Affordable, residential, large campus. Good for biology + biotechnology.',link:'https://www.amu.ac.in'},
+  {rank:'Top 5',name:'Jamia Millia Islamia',loc:'New Delhi',fee:'~₹20,000/yr',cut:'Moderate-High CUET',type:'Central Uni',val:'Good Value Delhi',note:'Faculty of Natural Sciences — Biology and Biotechnology programs are well-regarded. Delhi location advantage. NAAC A+ accredited.',link:'https://www.jmi.ac.in'},
+  {rank:'NIRF Top',name:'Hyderabad University (UoH)',loc:'Hyderabad, Telangana',fee:'~₹15,000–25,000/yr',cut:'CUET + Interview',type:'Central Uni',val:'Research Excellent',note:'School of Life Sciences is exceptional. Beautiful campus with deer park (!). Strong research + PhD pathway. National award for innovation.',link:'https://uohyd.ac.in'},
+  {rank:'Top Private',name:'St. Xavier\'s College Mumbai',loc:'Mumbai, Maharashtra',fee:'~₹25,000–40,000/yr',cut:'Entrance + Board marks',type:'Autonomous',val:'Prestigious Private',note:'Heritage + academic excellence. Own entrance test alongside CUET. BSc Biology/Biotechnology programs are highly regarded. Alumni network is extraordinary.',link:'https://xaviers.edu'},
+  {rank:'Top Private',name:'Loyola College',loc:'Chennai, Tamil Nadu',fee:'~₹20,000–35,000/yr',cut:'Entrance + CUET',type:'Autonomous',val:'South India Prestigious',note:'NAAC A++ rated. Exceptional biology and chemistry departments. Research opportunities, great faculty, cultural diversity.',link:'https://loyolacollege.edu'},
+  {rank:'Top',name:'Christ University',loc:'Bengaluru, Karnataka',fee:'₹1–1.5 Lakh/yr',cut:'Entrance + CUET',type:'Deemed Private',val:'Good Infrastructure',note:'BSc programmes well-structured. Bangalore location = internship access to biotech industry. Higher fees but strong placements.',link:'https://christuniversity.in'},
+  {rank:'Top',name:'Fergusson College',loc:'Pune, Maharashtra',fee:'~₹15,000–25,000/yr',cut:'Maharashtra CET + CUET',type:'Autonomous Govt-aided',val:'⭐ Underrated Gem',note:'One of India\'s most storied science colleges (est. 1885). Legendary alumni. Biology + Chemistry depts are strong. Very affordable. Pune ecosystem advantage.',link:'https://fergusson.edu'},
+  {rank:'Affordable Central',name:'Mahatma Gandhi Central University',loc:'Bihar',fee:'~₹15,000/yr',cut:'Low-moderate CUET',type:'Central Uni',val:'⭐ Budget Option',note:'MGCU — newer central university, affordable, growing research infrastructure. Good safety net option for biology students.',link:'https://www.mgcub.ac.in'},
+  {rank:'Top',name:'Presidency College',loc:'Kolkata, West Bengal',fee:'~₹10,000/yr',cut:'State merit',type:'Govt Autonomous',val:'⭐ Iconic Budget',note:'Legendary institution (1817). Biology, Chemistry departments have remarkable history. Extremely affordable. Best for students from eastern India.',link:'https://presicollege.ac.in'},
+  {rank:'Top Science',name:'Ramjas College (DU)',loc:'Delhi',fee:'~₹18,000/yr',cut:'DU CUET',type:'Central Uni College',val:'Good DU Option',note:'Strong science departments within Delhi University ecosystem. Research culture, DST-funded projects. Good budget option for Delhi-based students.',link:'https://ramjas.du.ac.in'},
+  {rank:'Research Hub',name:'Indian Institute of Science (IISc) — BSc',loc:'Bengaluru, Karnataka',fee:'~₹25,000/yr',cut:'Very high CUET/JEE',type:'Deemed Central',val:'India\'s #1 Research',note:'IISc BSc Research programme — only 120 seats. If she gets in, this is the single best science undergraduate program in India. World-class.',link:'https://iisc.ac.in'},
+  {rank:'Top Private',name:'Amity University',loc:'Noida, UP',fee:'₹1.5–2.5 Lakh/yr',cut:'CUET + Amity test',type:'Private',val:'Good Infrastructure',note:'Modern infrastructure, industry connections, biotechnology programs are well-funded. Higher fees but good placement support.',link:'https://amity.edu'},
+],
+icar:[
+  {rank:'NIRF #1 Agri',name:'ICAR-IARI (Indian Agricultural Research Institute)',loc:'New Delhi',fee:'~₹30,000/yr',cut:'Top 100 ICAR rank',type:'Central Govt Research Inst',val:'The IIT of Agriculture',note:'India\'s premiere agri research institute. BSc + MSc in Agriculture Sciences. Alumni include leading scientists, policy makers. Fully subsidized. Scholarship available.',link:'https://iari.res.in'},
+  {rank:'NIRF #2 Agri',name:'National Dairy Research Institute (NDRI)',loc:'Karnal, Haryana',fee:'~₹25,000/yr',cut:'Good ICAR rank',type:'Central Govt',val:'Best Dairy/Food Science',note:'World-class dairy + food technology programs. ICAR\'s top-ranked institution two years running. Placement in FMCG, dairy companies, research orgs.',link:'https://ndri.res.in'},
+  {rank:'NIRF Top 5',name:'Punjab Agricultural University (PAU)',loc:'Ludhiana, Punjab',fee:'~₹30,000/yr',cut:'State merit + ICAR',type:'Govt State',val:'⭐ Value + Legacy',note:'One of India\'s oldest agri universities. Green revolution legacy. Strong industry connect with Punjab agri sector. Affordable, prestigious.',link:'https://www.pau.edu'},
+  {rank:'NIRF Top 5',name:'BHU — Institute of Agricultural Sciences',loc:'Varanasi, UP',fee:'~₹15,000/yr',cut:'ICAR + BHU UET',type:'Central Uni',val:'⭐ Best Value',note:'Part of BHU — incredible campus, central uni fees, well-connected with ICAR research network. Underrated option.',link:'https://bhu.ac.in/ias'},
+  {rank:'Top South',name:'Tamil Nadu Agricultural University (TNAU)',loc:'Coimbatore, Tamil Nadu',fee:'₹40,000–60,000/yr',cut:'TN AUCET',type:'Govt State',val:'South India Best',note:'NAAC A grade. 11 affiliated colleges. Strong research, agri biotech focus. Gateway to agri sector in South India.',link:'https://www.tnau.ac.in'},
+  {rank:'Top',name:'Kerala Agricultural University (KAU)',loc:'Thrissur, Kerala',fee:'₹25,000–40,000/yr',cut:'State + ICAR',type:'Govt State',val:'Good Value Kerala',note:'Beautiful campus, strong horticulture + plantation crops programs. Good research tie-ups with spice board, rubber board.',link:'https://kau.in'},
+  {rank:'Top West',name:'BSKKV Dapoli (Konkan Agri Uni)',loc:'Ratnagiri, Maharashtra',fee:'₹20,000–40,000/yr',cut:'MHT CET Agri',type:'Govt State',val:'⭐ Coastal Agri Gem',note:'Specializes in coastal agriculture, horticulture, fish sciences. Unique niche. Affordable Maharashtra state fees.',link:'https://dbskkv.org'},
+  {rank:'Top',name:'University of Agricultural Sciences (UAS Bangalore)',loc:'Bengaluru, Karnataka',fee:'₹30,000–50,000/yr',cut:'KCET',type:'Govt State Karnataka',val:'Good Placement',note:'NAAC A grade, strong in crop sciences, biotechnology. Placement at agri corps, startups, research institutes. Good option for Karnataka students.',link:'https://uasbangalore.edu.in'},
+  {rank:'Top East',name:'OUAT Bhubaneswar',loc:'Bhubaneswar, Odisha',fee:'~₹25,000/yr',cut:'OUAT entrance',type:'Govt State',val:'Affordable East India',note:'Orissa University of Ag & Technology. Affordable, strong in crop + soil sciences. ICAR funding. Growing research profile.',link:'https://www.ouat.ac.in'},
+  {rank:'Top Central',name:'JNKVV Jabalpur',loc:'Jabalpur, MP',fee:'~₹20,000/yr',cut:'MP state + ICAR',type:'Govt State',val:'⭐ Budget Pick MP',note:'Jawaharlal Nehru Krishi Vishwa Vidyalaya — affordable, central India location, good crop sciences program. Great value for MP domicile.',link:'https://jnkvv.org'},
+  {rank:'Top Private',name:'Sam Higginbottom University (SHUATS)',loc:'Allahabad, UP',fee:'₹60,000–1.2 Lakh/yr',cut:'SHUATS entrance',type:'Private Deemed',val:'Good Private Option',note:'Formerly known as Allahabad Agricultural Institute. Christian mission institution. Good infrastructure, ICAR accredited programs.',link:'https://shiats.edu.in'},
+  {rank:'Good',name:'Anand Agricultural University (AAU)',loc:'Anand, Gujarat',fee:'₹30,000–50,000/yr',cut:'Gujarat state',type:'Govt State',val:'Dairy + Agri Hub',note:'Heart of Gujarat\'s dairy cooperative country. Excellent milk, animal sciences, food technology programs. Amul proximity = internship goldmine.',link:'https://aau.in'},
+  {rank:'Research',name:'ICAR-NBPGR (National Bureau of Plant Genetic Resources)',loc:'New Delhi',fee:'Only MSc/PhD',cut:'Top MSc candidates',type:'Central Govt',val:'Research Pathway',note:'Not UG — but mention for post-BSc pathway. World\'s 4th largest plant genetic resource bank. Career destination for ICAR-trained biology students.',link:'https://www.nbpgr.ernet.in'},
+  {rank:'Top Horticulture',name:'UHS Bagalkot',loc:'Bagalkot, Karnataka',fee:'₹25,000–45,000/yr',cut:'KCET',type:'Govt State',val:'Horticulture Specialist',note:'University of Horticultural Sciences — dedicated to horticulture, floriculture, landscape. India\'s best for this niche. Karnataka students especially.',link:'https://www.uhsbagalkot.edu.in'},
+  {rank:'⭐ Budget',name:'GB Pant University (Pantnagar)',loc:'Pantnagar, Uttarakhand',fee:'~₹20,000–35,000/yr',cut:'State + ICAR',type:'Govt State',val:'⭐ Heritage + Value',note:'Pantnagar — India\'s first agricultural university (1960). Green revolution birthplace. Affordable, residential, legacy campus. Excellent field exposure.',link:'https://www.gbpuat.ac.in'},
+],
+nestCol:[
+  {rank:'NEST/DAE #1',name:'NISER Bhubaneswar',loc:'Bhubaneswar, Odisha',fee:'~₹20,000/yr + ₹80,000 annual scholarship',cut:'Top NEST rank',type:'Dept of Atomic Energy',val:'⭐ Outstanding Value',note:'5-year Integrated MSc. Fully residential. DISHA scholarship ₹80K/year offsets ALL fees. BARC direct recruitment for CGPA 7.5+. Graduates get Harvard, Stanford, Max Planck PhD offers. This is extraordinary value.',link:'https://www.niser.ac.in'},
+  {rank:'NEST/DAE #2',name:'UM-DAE CEBS Mumbai',loc:'Mumbai, Maharashtra',fee:'~₹25,000/yr',cut:'Top 200 NEST',type:'Dept of Atomic Energy',val:'⭐ Mumbai Research Hub',note:'Centre for Excellence in Basic Sciences — University of Mumbai campus. Mumbai location = internship access to TIFR, BARC, pharmaceutical industry. Incredibly affordable with DAE backing.',link:'https://www.cebs.res.in'},
+  {rank:'IAT #1',name:'IISER Pune',loc:'Pune, Maharashtra',fee:'~₹80,000–90,000/yr',cut:'Top 300 IAT',type:'MoE Government',val:'India\'s Top Research',note:'Oldest + most reputed IISER. Located near NCL, IUCAA, ARI for collaborations. Best for chemistry, biology, physics research. World-class faculty, international exchange. Produces Ivy League PhD students.',link:'https://www.iiserpune.ac.in'},
+  {rank:'IAT #2',name:'IISER Kolkata',loc:'Mohanpur, West Bengal',fee:'~₹80,000/yr',cut:'Top 400 IAT',type:'MoE Government',val:'Theoretical Sciences Hub',note:'Renowned for theoretical physics + mathematics. BRICS, EIC-funded research. Strong in physical sciences. Peaceful campus surrounded by greenery. Great for deep thinkers.',link:'https://www.iiserkol.ac.in'},
+  {rank:'IAT #3',name:'IISER Mohali',loc:'Sahibzada Ajit Singh Nagar, Punjab',fee:'~₹80,000/yr',cut:'Top 500 IAT',type:'MoE Government',val:'Balanced Sciences',note:'Balanced approach across all science disciplines. Access to Punjab\'s cultural richness. Strong biology + chemistry departments. Great infrastructure.',link:'https://www.iisermohali.ac.in'},
+  {rank:'IAT #4',name:'IISER Bhopal',loc:'Bhopal, MP',fee:'~₹80,000/yr',cut:'Top 600 IAT',type:'MoE Government',val:'Largest Campus',note:'Largest campus among IISERs. Strong environmental science and chemistry programs. Central India location. Fast-growing research profile.',link:'https://www.iiserb.ac.in'},
+  {rank:'IAT #5',name:'IISER Thiruvananthapuram',loc:'Thiruvananthapuram, Kerala',fee:'~₹85,000/yr',cut:'Top 700 IAT',type:'MoE Government',val:'Kerala Research Hub',note:'Close to VSSC and SAC (space research centres). Strong in physics + computational sciences. Kerala\'s high literacy ecosystem is a bonus.',link:'https://iisertvm.ac.in'},
+  {rank:'IAT',name:'IISER Tirupati',loc:'Tirupati, Andhra Pradesh',fee:'~₹85,000/yr',cut:'Top 800 IAT',type:'MoE Government',val:'Growing Fast',note:'Newer campus, temporary infrastructure upgrading. Strong faculty being recruited. Good option if other IISERs are a stretch — research quality is equivalent.',link:'https://www.iisertirupati.ac.in'},
+  {rank:'IAT + Others',name:'IISc Bengaluru — BSc Research',loc:'Bengaluru, Karnataka',fee:'~₹25,000/yr',cut:'Very Top IAT/JEE',type:'Deemed Central Uni',val:'India\'s #1 University',note:'Indian Institute of Science — QS World Rank in Top 200. BSc Research (4-year) program. Only 120 seats. Research stipend ₹12,000/month. If she gets here, this is India\'s absolute peak for science.',link:'https://iisc.ac.in'},
+],
+courses:[
+  {name:'MBBS — Bachelor of Medicine, Bachelor of Surgery',dur:'5.5 years',desc:'The core medical degree. Covers human anatomy, physiology, pathology, pharmacology, and clinical practice. Leads to becoming a licensed doctor. After MBBS, pursue MD/MS through NEET-PG.',tags:['NEET required','Clinical','Most Competitive'],hot:true},
+  {name:'BDS — Bachelor of Dental Surgery',dur:'5 years',desc:'Dental sciences degree. Less competitive than MBBS but equally through medical training. Specialization in maxillofacial, orthodontics, endodontics post-BDS.',tags:['NEET required','Dental','Good ROI'],hot:false},
+  {name:'BS-MS Dual Degree (IISER/IISc)',dur:'5 years',desc:'Integrated Bachelor\'s + Master\'s in sciences (Biology, Chemistry, Physics, Math). Research-oriented. Leads to PhD in India or abroad. Stipend available. Gateway to global science career.',tags:['IAT/NEST required','Research','Global PhD pathway'],hot:true},
+  {name:'BSc Biology / Biological Sciences',dur:'3 years',desc:'Foundation degree in life sciences. Covers cell biology, genetics, ecology, physiology. Can be followed by MSc, PhD, or professional courses like BEd, MBA in biotech.',tags:['CUET','Wide scope','Affordable'],hot:false},
+  {name:'BSc Biotechnology',dur:'3 years',desc:'Combines biology with technology. Covers molecular biology, genetic engineering, bioinformatics, fermentation, immunology. Excellent industry placement in pharma + biotech sector.',tags:['CUET/CUET-ICAR','Pharma Jobs','Growing Field'],hot:true},
+  {name:'BSc Agriculture',dur:'4 years',desc:'Comprehensive agriculture science degree. Covers crop science, soil science, agri economics, plant pathology, animal husbandry. Gateway to agri research, agribusiness, govt services.',tags:['ICAR AIEEA','Govt Jobs','Food Security Field'],hot:false},
+  {name:'BSc Microbiology',dur:'3 years',desc:'Study of microorganisms and their impact on health, food, environment. Leads to careers in clinical labs, food QC, research, public health. Growing post-COVID demand.',tags:['CUET','Lab Careers','High Demand'],hot:false},
+  {name:'BSc Biochemistry',dur:'3 years',desc:'Chemistry of living systems — metabolism, enzymes, DNA, proteins. Excellent foundation for pharma research, clinical biochemistry, and medical lab sciences.',tags:['CUET','Pharma Research','Analytical'],hot:false},
+  {name:'BAMS — Bachelor of Ayurvedic Medicine & Surgery',dur:'5.5 years',desc:'Ayurvedic medical degree. Growing popularity + government support. Covers traditional medicine systems with modern clinical training. NEET required.',tags:['NEET required','Ayurveda','Growing Sector'],hot:false},
+  {name:'Integrated MSc Biology / Life Sciences (JNU, BHU, HCU)',dur:'5 years',desc:'Direct 5-year route from Class 12 to MSc in life sciences at top central universities. Excellent research foundation. CUET-based admission. Near-free at central universities.',tags:['CUET','Research Track','Very Affordable'],hot:true},
+  {name:'BSc Genetics / Molecular Biology',dur:'3 years',desc:'Specialized program in heredity, DNA, genetic engineering, genomics. Highly relevant in the age of personalized medicine + gene therapy. Limited seats in top colleges.',tags:['CUET','Niche Specialty','Future-Forward'],hot:false},
+  {name:'BSc Environmental Science',dur:'3 years',desc:'Study of ecosystems, climate change, pollution, conservation. Important career pathway given climate crisis urgency. Govt + NGO + research career options.',tags:['CUET','Policy Careers','Climate Relevance'],hot:false},
+  {name:'BSc Nursing',dur:'4 years',desc:'Professional nursing degree. NEET-qualified students can pursue hospital-based nursing. High demand in India and internationally. Govt + private hospital placements.',tags:['Some colleges use NEET score','Healthcare','Global Demand'],hot:false},
+  {name:'BVSc & AH — Veterinary Science',dur:'5.5 years',desc:'Veterinary medicine degree. Covers animal health, surgery, public health. NEET qualified. Career in govt veterinary services, research, private practice.',tags:['NEET required','Animal Science','Govt Jobs'],hot:false},
+  {name:'PhD / Research Career (post-BSc-MS)',dur:'4–6 years',desc:'For IISER/NISER graduates — direct PhD at top institutes in India (NCBS, TIFR, IISc) or abroad. Stipend ₹31,000–54,000/month in India. Global opportunities at Harvard, Stanford, Max Planck.',tags:['Post IISER/NISER','Highest Prestige','International Stipend'],hot:true},
+]
+};
+
+// ─── APP STATE ───
+const NEET_DATE = new Date('2025-05-04');
+let state={logs:[],topicsDone:{},mood:null};
+function loadS(){try{const s=localStorage.getItem('hs_v3');if(s)state=JSON.parse(s)}catch(e){}}
+function saveS(){localStorage.setItem('hs_v3',JSON.stringify(state))}
+
+const mantras=[
+  {t:'"She believed she could, so she did."',a:'— R.S. Grey'},
+  {t:'"Biology is your superpower. Physics is just one more challenge you\'ll conquer."',a:'— Your study companion'},
+  {t:'"A river cuts through rock not by force but by persistence."',a:'— Jim Watkins'},
+  {t:'"The secret of getting ahead is getting started."',a:'— Mark Twain'},
+  {t:'"You are braver than you believe, stronger than you seem."',a:'— A.A. Milne'},
+  {t:'"Hard days are the best because that\'s when champions are made."',a:'— Gabby Douglas'},
+  {t:'"Every expert was once a beginner. Every pro was once an amateur."',a:'— Robin Sharma'},
+  {t:'"One chapter at a time. One day at a time. That is all."',a:'— Unknown'},
+  {t:'"She is clothed with strength and dignity, and she laughs without fear of the future."',a:'— Proverbs 31:25'},
+  {t:'"The pain of studying is temporary. The pride of your success is permanent."',a:'— Unknown'},
+  {t:'"You don\'t need to love Physics. You just need to be strategic about it."',a:'— Every NEET topper ever'},
+];
+let lastM=-1;
+
+// ─── SPLASH ───
+function enterApp(){
+  document.getElementById('splash').classList.add('out');
+  setTimeout(()=>{
+    document.getElementById('splash').style.display='none';
+    document.getElementById('app').style.display='block';
+    init();
+  },800);
+}
+
+// ─── INIT ───
+function init(){
+  loadS();
+  updateDate();
+  updateStats();
+  renderLogs();
+  renderHeatmap();
+  renderProgress();
+  renderAllExams();
+  renderPhysics();
+  renderColleges();
+  newMantra(true);
+  setupFI();
+  restoreMood();
+}
+
+function updateDate(){
+  const d=new Date();
+  document.getElementById('today-date').textContent=d.toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).toUpperCase();
+  const diff=Math.ceil((NEET_DATE-d)/(864e5));
+  document.getElementById('dl').textContent=diff>0?diff:'✓';
+}
+
+// ─── MOOD ───
+function setMood(btn){
+  document.querySelectorAll('.mb').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a');state.mood=btn.dataset.mood;saveS();
+}
+function restoreMood(){if(state.mood){const b=document.querySelector(`[data-mood="${state.mood}"]`);if(b)b.classList.add('a');}}
+
+// ─── PAGES ───
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('a'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('a'));
+  document.getElementById('page-'+id).classList.add('a');
+  el.classList.add('a');
+  setTimeout(setupFI,50);
+}
+
+// ─── EXAM TABS ───
+function switchExam(btn,id){
+  document.querySelectorAll('.et').forEach(t=>t.classList.remove('a'));
+  document.querySelectorAll('.ep').forEach(p=>p.classList.remove('a'));
+  btn.classList.add('a');
+  document.getElementById('exam-'+id).classList.add('a');
+}
+
+// ─── COLLEGE TABS ───
+function switchCollege(btn,id){
+  document.querySelectorAll('.sta').forEach(t=>t.classList.remove('a'));
+  document.querySelectorAll('#page-college .ep').forEach(p=>p.classList.remove('a'));
+  btn.classList.add('a');
+  document.getElementById(id).classList.add('a');
+}
+
+// ─── RENDER TOPICS ───
+const wMap={s:'w-s',h:'w-h',m:'w-m',l:'w-l'};
+const wLab={s:'⭐ Must Do',h:'High',m:'Medium',l:'Lower'};
+function renderList(cid,arr){
+  const c=document.getElementById(cid);if(!c)return;
+  c.innerHTML=arr.map((item,i)=>{
+    const key=cid+'_'+i,done=state.topicsDone[key];
+    return`<div class="pr ${done?'done':''}" onclick="toggleTopic('${key}',this)">
+      <div class="prn">${item.n}</div>
+      <span class="prw ${wMap[item.w]}">${wLab[item.w]}</span>
+      <span class="prck">${done?'✅':'○'}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderAllExams(){
+  renderList('neet-bot',D.neetBot);renderList('neet-zoo',D.neetZoo);
+  renderList('neet-chem',D.neetChem);renderList('neet-phys',D.neetPhys);
+  renderList('cuet-bio',D.cuetBio);renderList('cuet-chem',D.cuetChem);
+  renderList('cuet-phys',D.cuetPhys);renderList('cuet-eng',D.cuetEng);renderList('cuet-gt',D.cuetGT);
+  renderList('icar-bio',D.icarBio);renderList('icar-chem',D.icarChem);
+  renderList('icar-phys',D.icarPhys);renderList('icar-agri',D.icarAgri);
+  renderList('nest-bio',D.nestBio);renderList('nest-chem',D.nestChem);
+  renderList('nest-phys',D.nestPhys);renderList('nest-math',D.nestMath);
+  renderList('iat-bio',D.iatBio);renderList('iat-chem',D.iatChem);
+  renderList('iat-phys',D.iatPhys);renderList('iat-math',D.iatMath);
+}
+
+function renderPhysics(){renderList('phy-check',D.physCheck);}
+
+function toggleTopic(key,row){
+  state.topicsDone[key]=!state.topicsDone[key];
+  row.classList.toggle('done',state.topicsDone[key]);
+  row.querySelector('.prck').textContent=state.topicsDone[key]?'✅':'○';
+  saveS();updateStats();
+  if(state.topicsDone[key])showToast('Topic complete ✦');
+}
+
+// ─── LOG ───
+function saveLog(){
+  const s=document.getElementById('ls').value,t=document.getElementById('lt').value.trim();
+  const h=parseFloat(document.getElementById('lh').value),n=document.getElementById('ln').value.trim();
+  const c=document.getElementById('lc').value;
+  if(!s){showToast('Pick a subject first ✦');return;}
+  if(!h||isNaN(h)){showToast('Enter hours studied ✦');return;}
+  const e={id:Date.now(),date:new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}),dateRaw:new Date().toISOString().split('T')[0],s,t,h,n,c:parseInt(c)};
+  state.logs.unshift(e);saveS();renderLogs();updateStats();renderHeatmap();renderProgress();
+  document.getElementById('ls').value='';document.getElementById('lt').value='';
+  document.getElementById('lh').value='';document.getElementById('ln').value='';document.getElementById('lc').value='3';
+  showToast('Session saved beautifully ✦');
+}
+
+function renderLogs(){
+  const c=document.getElementById('log-list');
+  if(!state.logs.length){c.innerHTML=`<div class="empty"><div class="empty-ico">🕯️</div><div class="empty-t">No sessions yet.<br>Begin your journey today.</div></div>`;return;}
+  const ce={1:'🌱',2:'📖',3:'✨'};
+  c.innerHTML=state.logs.map(e=>`<div class="le">
+    <div class="le-d"><span>${e.date} · ${ce[e.c]||'📖'}</span>
+    <div style="display:flex;gap:6px;align-items:center"><span class="le-h">${e.h}h</span><button class="del-btn" onclick="delLog(${e.id})">✕</button></div></div>
+    <div class="le-s">${e.s}</div>
+    ${e.t?`<div class="le-n" style="font-size:10.5px;color:var(--faint);margin-bottom:3px">📌 ${e.t}</div>`:''}
+    ${e.n?`<div class="le-n">${e.n}</div>`:''}
+  </div>`).join('');
+}
+
+function delLog(id){state.logs=state.logs.filter(l=>l.id!==id);saveS();renderLogs();updateStats();renderHeatmap();renderProgress();showToast('Entry removed');}
+
+// ─── STATS ───
+function updateStats(){
+  const th=state.logs.reduce((s,l)=>s+(l.h||0),0);
+  document.getElementById('total-h').textContent=Math.round(th*10)/10;
+  document.getElementById('total-d').textContent=new Set(state.logs.map(l=>l.dateRaw)).size;
+  document.getElementById('topics-n').textContent=Object.values(state.topicsDone).filter(Boolean).length;
+  const dates=[...new Set(state.logs.map(l=>l.dateRaw))].sort().reverse();
+  let streak=0,today=new Date().toISOString().split('T')[0],yest=new Date(Date.now()-864e5).toISOString().split('T')[0];
+  let chk=dates[0]===today||dates[0]===yest?dates[0]:null;
+  if(chk){for(let d of dates){if(d===chk){streak++;const p=new Date(new Date(chk)-864e5);chk=p.toISOString().split('T')[0];}else if(d<chk)break;}}
+  document.getElementById('sc').textContent=streak;
+}
+
+// ─── PROGRESS ───
+function renderProgress(){
+  const subs=['Biology','Chemistry','Physics','Maths'];
+  const cols=['f-g','f-a','f-p','f-r'];
+  const targets={Biology:120,Chemistry:80,Physics:60,Maths:30};
+  const hrs={};
+  state.logs.forEach(l=>{const s=subs.find(x=>l.s.includes(x));if(s)hrs[s]=(hrs[s]||0)+(l.h||0);});
+  document.getElementById('prog-bars').innerHTML=subs.map((s,i)=>{
+    const h=hrs[s]||0,pct=Math.min(100,Math.round(h/targets[s]*100));
+    return`<div style="margin-top:${i?'10px':'0'}">
+      <div class="pl"><span class="pn">${s}</span><span class="pp">${h}h / ${targets[s]}h</span></div>
+      <div class="pt"><div class="pf ${cols[i]}" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ─── HEATMAP ───
+function renderHeatmap(){
+  const c=document.getElementById('heatmap'),today=new Date(),lm={};
+  state.logs.forEach(l=>lm[l.dateRaw]=(lm[l.dateRaw]||0)+(l.h||0));
+  let html='';
+  for(let i=27;i>=0;i--){
+    const d=new Date(today);d.setDate(today.getDate()-i);
+    const k=d.toISOString().split('T')[0],h=lm[k]||0;
+    const lv=h===0?0:h<2?1:h<4?2:h<6?3:4;
+    html+=`<div class="hc h${lv}" title="${k}: ${h}h">${d.getDate()}</div>`;
+  }
+  c.innerHTML=html;
+}
+
+// ─── MANTRA ───
+function newMantra(init){
+  let idx;do{idx=Math.floor(Math.random()*mantras.length);}while(idx===lastM);
+  lastM=idx;const m=mantras[idx];
+  const t=document.getElementById('mt'),a=document.getElementById('ma');
+  if(init){t.textContent=m.t;a.textContent=m.a;return;}
+  t.style.opacity=0;setTimeout(()=>{t.textContent=m.t;a.textContent=m.a;t.style.transition='opacity .4s';t.style.opacity=1;},200);
+}
+
+// ─── COLLEGES ───
+function renderColleges(){
+  renderColPanel('neet-col',COLLEGES.neet,'NEET','Medical / MBBS');
+  renderColPanel('cuet-col',COLLEGES.cuet,'CUET','BSc Sciences');
+  renderColPanel('icar-col',COLLEGES.icar,'ICAR','Agriculture Sciences');
+  renderColPanel('nest-col',COLLEGES.nestCol,'NEST/IAT','Research Institutes');
+  renderCoursesPanel();
+}
+
+function renderColPanel(id,cols,exam,stream){
+  const c=document.getElementById(id);if(!c)return;
+  const worth=cols.filter(x=>x.val&&x.val.includes('⭐'));
+  let html=`<div class="card" style="border-color:rgba(184,147,74,.3);margin-bottom:14px">
+    <div style="font-size:12px;color:var(--txt);line-height:1.7">Top 15 colleges for <strong style="color:var(--gold-l)">${exam} → ${stream}</strong>. Ranked by NIRF 2025, India Today, and expert reviews. Links to official sites included.</div>
+  </div>`;
+  if(worth.length){
+    html+=`<div class="worth-banner"><div class="worth-ico">⭐</div><div class="worth-txt"><strong style="color:var(--gold-xl)">Worth Mention & Economical:</strong> ${worth.map(w=>w.name.split(' (')[0]).join(', ')}</div></div>`;
+  }
+  html+=cols.map((col,i)=>`<div class="col-card">
+    <div class="col-rank">Rank ${i+1} · ${col.rank}</div>
+    <div class="col-name">${col.name}</div>
+    <div class="col-loc">📍 ${col.loc}</div>
+    <div class="col-meta">
+      <span class="col-chip cc-fee">💰 ${col.fee}</span>
+      <span class="col-chip cc-score">🎯 ${col.cut}</span>
+      <span class="col-chip cc-type">${col.type}</span>
+      ${col.val.includes('⭐')?`<span class="col-chip cc-val">${col.val}</span>`:''}
+    </div>
+    <div class="col-note">${col.note}</div>
+    ${col.link?`<a href="${col.link}" class="col-link" target="_blank">Visit Official Site →</a>`:''}
+  </div>`).join('');
+  c.innerHTML=html;
+}
+
+function renderCoursesPanel(){
+  const c=document.getElementById('courses');if(!c)return;
+  let html=`<div class="card" style="border-color:rgba(176,138,176,.3);margin-bottom:14px">
+    <div style="font-size:12px;color:var(--txt);line-height:1.7">All the paths that open up after these exams. From MBBS to research science, agriculture to biotechnology — her future is <strong style="color:var(--plum-l)">extraordinary</strong>.</div>
+  </div>`;
+  html+=COLLEGES.courses.map(crs=>`<div class="course-card">
+    <div class="crs-header">
+      <div><div class="crs-name">${crs.name}</div><div class="crs-dur">⏱ ${crs.dur}</div></div>
+      ${crs.hot?'<span class="bdg b-r">Hot</span>':''}
+    </div>
+    <div class="crs-desc">${crs.desc}</div>
+    <div class="crs-tags">${crs.tags.map(t=>`<span class="ctag${crs.hot?' hot':''}">${t}</span>`).join('')}</div>
+  </div>`).join('');
+  c.innerHTML=html;
+}
+
+// ─── TOAST ───
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ─── FADE INS ───
+function setupFI(){setTimeout(()=>{document.querySelectorAll('.fi:not(.vis)').forEach((el,i)=>setTimeout(()=>el.classList.add('vis'),i*70));},40);}
+</script>
+</body>
+</html>
